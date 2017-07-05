@@ -17,6 +17,9 @@ The example code in the WebSphere-In-Bluemix-API-Examples folder contains Java c
   * Delete a service instance
   * And more...
   
-The example code in the Scaling-Service-Example folder contains a script that utilizes the API to perform tasks such as starting
-and stopping nodes within a service instance
-
+The example code in the Scaling-Service-Example folder contains a script that utilizes the API to perform tasks such as:
+  
+  * Review resources running within a service instance
+  * Start desired number of nodes within a service instance
+  * Stop desired number of nodes within a service instance
+ 
