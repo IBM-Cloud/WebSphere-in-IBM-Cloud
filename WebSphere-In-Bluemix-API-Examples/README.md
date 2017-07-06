@@ -1,4 +1,4 @@
-# WebSphere Application Server in Bluemix API Usage Examples 
+# WebSphere Application Server in Bluemix API Usage Examples
 
 The example code in this repository contains Java code that utilizes the API to perform tasks such as:
 
@@ -14,10 +14,10 @@ The example code in this repository contains Java code that utilizes the API to 
 
   * Create a new Java Project in Eclipse
   * Copy the `.java` files from this repository and paste into the `src` folder in your new Eclipse Java project.
-  * Right click the java class you want to run and select `Run As` -> `Java Application` 
+  * Right click the java class you want to run and select `Run As` -> `Java Application`
 
 ## API documentation
-These examples were built with developer reusability in mind. There is Swagger UI API Documentation available for reference. We have 3 different environments you can use.
+These examples were built with developer reusability in mind. There is Swagger UI API Documentation available for reference. We have 4 different environments you can use.
 
 * [USA (Dallas)][dallas_swagger_api_url]
 * [UK (London)][london_swagger_api_url]

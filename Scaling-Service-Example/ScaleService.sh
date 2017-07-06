@@ -30,7 +30,7 @@
 
 ################# Get Bearer Token Function #####################
 # This function retrieves the Bearer Token that is used in order
-# to access the WasaaS Broker API
+# to access the WASaaS Broker API
 #
 # Parameters: None
 #################################################################
@@ -310,8 +310,6 @@ CurlFlags="-k -i -s"  # -k for ssl ignoring, -i for header info, -s for silent m
 echo "Retrieving bearer token..."
 echo ""
 get_bearer_token
-echo "Your bearer token is: $BearerToken"
-echo ""
 echo "Retrieving resource instance information..."
 
 # Retrieve all service instances

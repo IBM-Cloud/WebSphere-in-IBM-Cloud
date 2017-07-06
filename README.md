@@ -7,7 +7,7 @@ WebSphere Application Server in Bluemix provides consumers with pre-configured T
 You can create and manage this service in 2 ways
 
   1. In your browser by creating an instance via the [Bluemix Catalog][catalog_url]
-  1. Programatically using the WebSphere Application Server in Bluemix *API*
+  1. Programmatically using the WebSphere Application Server in Bluemix *API*
 
 The example code in the WebSphere-In-Bluemix-API-Examples folder contains Java code that utilizes the API to perform tasks such as:
 
@@ -16,12 +16,12 @@ The example code in the WebSphere-In-Bluemix-API-Examples folder contains Java c
   * Start / Stop your machine.
   * Delete a service instance
   * And more...
-  
+
 The example code in the Scaling-Service-Example folder contains a script that utilizes the API to perform tasks such as:
-  
+
   * Review resources running within a service instance
   * Start desired number of nodes within a service instance
   * Stop desired number of nodes within a service instance
- 
+
 [wasaas_docs_url]: https://new-console.ng.bluemix.net/docs/services/ApplicationServeronCloud/index.html
 [catalog_url]: https://console.ng.bluemix.net/catalog/services/websphere-application-server/
