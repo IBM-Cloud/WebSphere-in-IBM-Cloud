@@ -1,4 +1,4 @@
-# WebSphere Application Server in Bluemix API Usage Examples 
+# WebSphere Application Server in Bluemix
 
 IBM [WebSphere Application Server in Bluemix][wasaas_docs_url] is a service in Bluemix that facilitates quick setup on a pre-configured WebSphere Application Server Liberty, Traditional Network Deployment, or Traditional WebSphere instance in a hosted cloud environment.
 
@@ -7,9 +7,9 @@ WebSphere Application Server in Bluemix provides consumers with pre-configured T
 You can create and manage this service in 2 ways
 
   1. In your browser by creating an instance via the [Bluemix Catalog][catalog_url]
-  1. Programatically using the WebSphere Application Server in Bluemix *API*
+  1. Programmatically using the WebSphere Application Server in Bluemix *API*
 
-The example code in this repository contains Java code that utilizes the API to perform tasks such as:
+The example code in the WebSphere-In-Bluemix-API-Examples folder contains Java code that utilizes the API to perform tasks such as:
 
   * Create a service instance.
   * Read credentials for your machine.
@@ -17,26 +17,11 @@ The example code in this repository contains Java code that utilizes the API to 
   * Delete a service instance
   * And more...
 
-## Running the code
+The example code in the Scaling-Service-Example folder contains a script that utilizes the API to perform tasks such as:
 
-* Running In Eclipse
-
-   1. Create a new Java Project in Eclipse
-
-	1. Copy the `.java` files from this repository and paste into the `src` folder in your new Eclipse Java project.
-	1. Right click the java class you want to run and select `Run As` -> `Java Application` 
-
-## API documentation
-These examples were built with developer reusability in mind. There is Swagger UI API Documentation available for reference. We have 3 different environments you can use.
-
-* [USA (Dallas)][dallas_swagger_api_url]
-* [UK (London)][london_swagger_api_url]
-* [Australia (Sydney)][sydney_swagger_api_url]
-* [Germany (Frankfurt)][frankfurt_swagger_api_url]
+  * Review resources running within a service instance
+  * Start desired number of nodes within a service instance
+  * Stop desired number of nodes within a service instance
 
 [wasaas_docs_url]: https://new-console.ng.bluemix.net/docs/services/ApplicationServeronCloud/index.html
 [catalog_url]: https://console.ng.bluemix.net/catalog/services/websphere-application-server/
-[dallas_swagger_api_url]: https://wasaas-broker.ng.bluemix.net/wasaas-broker/api
-[london_swagger_api_url]: https://wasaas-broker.eu-gb.bluemix.net/wasaas-broker/api
-[sydney_swagger_api_url]: https://wasaas-broker.au-syd.bluemix.net/wasaas-broker/api
-[frankfurt_swagger_api_url]: https://wasaas-broker.eu-de.bluemix.net/wasaas-broker/api
