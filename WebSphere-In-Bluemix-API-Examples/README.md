@@ -12,10 +12,9 @@ The example code in this repository contains Java code that utilizes the API to 
 
 * Running In Eclipse
 
-   1. Create a new Java Project in Eclipse
-
-	1. Copy the `.java` files from this repository and paste into the `src` folder in your new Eclipse Java project.
-	1. Right click the java class you want to run and select `Run As` -> `Java Application` 
+  * Create a new Java Project in Eclipse
+  * Copy the `.java` files from this repository and paste into the `src` folder in your new Eclipse Java project.
+  * Right click the java class you want to run and select `Run As` -> `Java Application` 
 
 ## API documentation
 These examples were built with developer reusability in mind. There is Swagger UI API Documentation available for reference. We have 3 different environments you can use.
