@@ -19,11 +19,11 @@ public class GetOrganization {
 		// You can see how to get your access token from GetOAuthToken sample class.
 		String accessToken = "<YOUR_ACCESS_TOKEN>";
 		// The Bluemix organization to query - case sensitive.
-		String org = "<YOUR_ORG>";
-		
+		String org = "<YOUR_ORG>"; // Example: dev
+
 		// Use TLSv1.2
 		System.setProperty("https.protocols", "TLSv1.2");
-        
+
 		// Create the URL.
 		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org);
 		HttpURLConnection con = (HttpURLConnection) orgsURL.openConnection();
@@ -33,11 +33,11 @@ public class GetOrganization {
 		BufferedReader br = null;
 		if (HttpURLConnection.HTTP_OK == con.getResponseCode()) {
 			br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		} 
+		}
 		else {
 			br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 		}
-		
+
 		StringBuffer response = new StringBuffer();
 		String line;
 
@@ -49,7 +49,7 @@ public class GetOrganization {
 		// Response from the request.
 		System.out.println(response.toString());
 	}
-	
+
 }
 //    ------------------------------------------------------------------------------
 //     Licensed under the Apache License, Version 2.0 (the "License");

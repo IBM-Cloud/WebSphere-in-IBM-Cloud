@@ -20,12 +20,12 @@ public class CreateServiceInstance {
 		// You can see how to get your access token from GetOAuthToken sample class.
 		String accessToken = "<YOUR_ACCESS_TOKEN>";
 		// The Bluemix organization & space to query - case sensitive.
-		String org = "<YOUR_ORG>";
-		String space = "<YOUR_SPACE>";
-		
+		String org = "<YOUR_ORG>"; // Example: johndoe@ibm.com
+		String space = "<YOUR_SPACE>"; // Example: dev 
+
 		// Use TLSv1.2.
 		System.setProperty("https.protocols", "TLSv1.2");
-        
+
 		// Create the URL.
 		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org + "/spaces/" + space + "/serviceinstances");
 		HttpURLConnection con = (HttpURLConnection) orgsURL.openConnection();
@@ -33,43 +33,43 @@ public class CreateServiceInstance {
 		con.setRequestProperty("Authorization", "Bearer " + accessToken);
 		con.setRequestProperty("Content-Type","application/json");
 		con.setDoOutput(true);
-		
+
 		/* CREATE OPTIONS
-		 * Type:                    The plan type to create. 
+		 * Type:                    The plan type to create.
 		 * 							Enum: ["LibertyCollective", "LibertyCore", "LibertyNDServer", "WASBase", "WASCell", "WASNDServer"]
-		 * 
+		 *
 		 * Name:                    Name your new service icon in Bluemix.
-		 * 
-		 * ApplicationServerVMSize: The size of the virtual machine. 
+		 *
+		 * ApplicationServerVMSize: The size of the virtual machine.
 		 * 							Enum: [S, M, L, XL, XXL]
-		 * 
-		 * ControlServerVMSize:     The size of the Virtual Machine containing the Collective Controller for a LibertyCollective service instance, 
+		 *
+		 * ControlServerVMSize:     The size of the Virtual Machine containing the Collective Controller for a LibertyCollective service instance,
 		 * 							or the size of the Virtual Machine containing the DMGR for a WASCell service instance. This is required for
-		 * 						 	types "LibertyCollective" and "WASCell", Illegal argument for the other Types. 
+		 * 						 	types "LibertyCollective" and "WASCell", Illegal argument for the other Types.
 		 * 							Enum: [S, M, L, XL, XXL]
-		 * 
-		 * NumberOfApplicationVMs:  The number (integer) of application server Virtual Machines to create This is required for types "LibertyCollective" 
+		 *
+		 * NumberOfApplicationVMs:  The number (integer) of application server Virtual Machines to create This is required for types "LibertyCollective"
 		 * 							and "WASCell", Illegal argument for the other Types.
-		 * 
+		 *
 		 * Software_Level:          This is optional for types "WASBase", "WASNDServer", and "WASCell". If one is not specified version "9.0.0" will be default.
 		 * 							Enum: ["8.5.5", "9.0.0"]
 		 */
 		String createOptionsJSON = "{\"Type\":\"LibertyCore\",\"Name\":\"MyFirstAPIServiceInstance\",\"ApplicationServerVMSize\":\"S\"}";
-		
+
 		// Add JSON POST data.
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 		wr.writeBytes(createOptionsJSON);
 		wr.flush();
 		wr.close();
-		
+
 		BufferedReader br = null;
 		if (HttpURLConnection.HTTP_OK == con.getResponseCode()) {
 			br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		} 
+		}
 		else {
 			br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 		}
-		
+
 		StringBuffer response = new StringBuffer();
 		String line;
 
@@ -80,7 +80,7 @@ public class CreateServiceInstance {
 
 		// Response from the request.
 		System.out.println(response.toString());
-		
+
 		/* Example Response for creating a service instance of type "LibertyCore"
 		 * {
 		 * 	"Status":"Active",
@@ -100,7 +100,7 @@ public class CreateServiceInstance {
 		 * }
 		 */
 	}
-	
+
 }
 //    ------------------------------------------------------------------------------
 //     Licensed under the Apache License, Version 2.0 (the "License");

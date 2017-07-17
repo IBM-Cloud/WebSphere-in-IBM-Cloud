@@ -19,14 +19,14 @@ public class GetResources {
 		// You can see how to get your access token from GetOAuthToken sample class.
 		String accessToken = "<YOUR_ACCESS_TOKEN>";
 		// The Bluemix organization & space to query - case sensitive.
-		String org = "<YOUR_ORG>";
-		String space = "<YOUR_SPACE>";
+		String org = "<YOUR_ORG>"; // Example: johndoe@ibm.com
+		String space = "<YOUR_SPACE>"; // Example: dev
 		// You can see how to get a service instance ID from the GetServiceInstances sample class.
-		String serviceInstanceID = "<YOUR_SERVICE_INSTANCE_ID>";
-		
+		String serviceInstanceID = "<YOUR_SERVICE_INSTANCE_ID>"; // Example: dc8djk2-ddbf-43n33-ba4e-132094dn3imd
+
 		// Use TLSv1.2
 		System.setProperty("https.protocols", "TLSv1.2");
-        
+
 		// Create the URL.
 		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org + "/spaces/" + space + "/serviceinstances/" + serviceInstanceID + "/resources");
 		HttpURLConnection con = (HttpURLConnection) orgsURL.openConnection();
@@ -36,11 +36,11 @@ public class GetResources {
 		BufferedReader br = null;
 		if (HttpURLConnection.HTTP_OK == con.getResponseCode()) {
 			br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		} 
+		}
 		else {
 			br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 		}
-		
+
 		StringBuffer response = new StringBuffer();
 		String line;
 
@@ -52,7 +52,7 @@ public class GetResources {
 		// Response from the request.
 		System.out.println(response.toString());
 	}
-	
+
 }
 //    ------------------------------------------------------------------------------
 //     Licensed under the Apache License, Version 2.0 (the "License");
