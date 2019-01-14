@@ -1,4 +1,4 @@
-# WebSphere Application Server in Bluemix API Usage Examples
+# WebSphere Application Server in IBM Cloud API Usage Examples
 
 The example code in this repository contains Java code that utilizes the API to perform tasks such as:
 
@@ -24,9 +24,7 @@ These examples were built with developer reusability in mind. There is Swagger U
 * [Australia (Sydney)][sydney_swagger_api_url]
 * [Germany (Frankfurt)][frankfurt_swagger_api_url]
 
-[wasaas_docs_url]: https://new-console.ng.bluemix.net/docs/services/ApplicationServeronCloud/index.html
-[catalog_url]: https://console.ng.bluemix.net/catalog/services/websphere-application-server/
-[dallas_swagger_api_url]: https://wasaas-broker.ng.bluemix.net/wasaas-broker/api
-[london_swagger_api_url]: https://wasaas-broker.eu-gb.bluemix.net/wasaas-broker/api
-[sydney_swagger_api_url]: https://wasaas-broker.au-syd.bluemix.net/wasaas-broker/api
-[frankfurt_swagger_api_url]: https://wasaas-broker.eu-de.bluemix.net/wasaas-broker/api
+[dallas_swagger_api_url]: https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api
+[london_swagger_api_url]: https://wasaas-broker.eu-gb.websphereappsvr.cloud.ibm.com/wasaas-broker/api
+[sydney_swagger_api_url]: https://wasaas-broker.au-syd.websphereappsvr.cloud.ibm.com/wasaas-broker/api
+[frankfurt_swagger_api_url]: https://wasaas-broker.eu-de.websphereappsvr.cloud.ibm.com/wasaas-broker/api

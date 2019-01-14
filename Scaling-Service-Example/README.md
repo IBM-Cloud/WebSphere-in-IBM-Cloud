@@ -8,7 +8,7 @@ This script can be used in conjunction with a cron job to start an appropriate w
 
 * Populate Required Fields
   * The following fields must be populated in order to run the script
-      1. HOST         (Example: https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1)                 
+      1. HOST         (Example: https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1)                 
       2. ORGANIZATION (Example: johndoe@ibm.com)          
       3. SPACE        (Example: dev)           
       4. BASIC_AUTH   (Example: Basic 99dj9jf9u7f77f7f7hwh3u4hjjnjk)         

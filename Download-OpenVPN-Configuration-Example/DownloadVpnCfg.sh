@@ -32,7 +32,7 @@ associated properties file.
 For federated ID authentication, don't set BASIC_AUTH in properties file.
 Instead, obtain a single use passcode and place it on the commandline.  The
 single use passcode may be acquired from the showpasscode.jsp via browser.  E.g.,
-https://login.ng.bluemix.net/UAALoginServerWAR/showpasscode.jsp
+https://identity-1.us-south.iam.cloud.ibm.com/identity/passcode
 EOF
 exit
 }

@@ -2,34 +2,50 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-// Get info about all service instances.
-public class GetServiceInstances {
-	/* WebSphere Application Server for Bluemix API URL.
+// Apply an action on a resource. For example, stop or start a virtual machine.
+public class ActionResource {
+	/* WebSphere Application Server for IBM Cloud API URL.
 	 * Available Environments:
-	 * Dallas - https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1
-	 * London - https://wasaas-broker.eu-gb.bluemix.net/wasaas-broker/api/v1
-	 * Sydney - https://wasaas-broker.au-syd.bluemix.net/wasaas-broker/api/v1
+	 * Dallas - https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * London - https://wasaas-broker.eu-gb.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Sydney - https://wasaas-broker.au-syd.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Frankfurt - https://wasaas-broker.eu-de.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
 	 */
-	private static final String apiEndpoint = "https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1";
+	
+	private static final String apiEndpoint = "https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1";
 
 	public static void main(String[] args) throws IOException{
 		// You can see how to get your access token from GetOAuthToken sample class.
 		String accessToken = "<YOUR_ACCESS_TOKEN>";
-		// The Bluemix organization & space to query - case sensitive.
+		// The IBM Cloud organization & space to query - case sensitive.
 		String org = "<YOUR_ORG>"; // Example: johndoe@ibm.com
 		String space = "<YOUR_SPACE>"; // Example: dev
+		// You can see how to get the service instance ID from the GetServiceInstances sample class.
+		String serviceInstanceID = "<YOUR_SERVICE_INSTANCE_ID>"; // Example: dc8djk2-ddbf-43n33-ba4e-132094dn3imd
+		// You can see how to get the resource ID from the GetResources sample class.
+		String resourceID = "<YOUR_RESOURCE_ID>"; // Example: 8dsjo03-939jksdf3-93j38f-93jf-39dfji32
+		// Query string to stop a virtual machine. Can also be "?action=start"
+		String query = "?action=stop";
+
 
 		// Use TLSv1.2
 		System.setProperty("https.protocols", "TLSv1.2");
 
 		// Create the URL.
-		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org + "/spaces/" + space + "/serviceinstances");
+		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org + "/spaces/" + space + "/serviceinstances/" + serviceInstanceID + "/resources/" + resourceID + query);
 		HttpURLConnection con = (HttpURLConnection) orgsURL.openConnection();
-		con.setRequestMethod("GET");
 		con.setRequestProperty("Authorization", "Bearer " + accessToken);
+		con.setRequestMethod("PUT");
+		con.setDoOutput(true);
+
+		// Send mock data with PUT to prevent HTTP 411.
+		OutputStreamWriter out = new OutputStreamWriter(con.getOutputStream());
+		out.write("mock data");
+		out.close();
 
 		BufferedReader br = null;
 		if (HttpURLConnection.HTTP_OK == con.getResponseCode()) {
