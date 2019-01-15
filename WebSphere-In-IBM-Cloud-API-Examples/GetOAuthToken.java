@@ -5,40 +5,48 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-// Query a space associated with an organization.
-public class GetSpace {
-	/* WebSphere Application Server for Bluemix API URL.
+import javax.xml.bind.DatatypeConverter;
+
+// Retrieve your OAuth token needed to use this API.
+public class GetOAuthToken {
+	/* WebSphere Application Server for IBM Cloud API URL. 
+	 * The access token returned from this call will only work for the environment URL you generate it with.
+	 * 
 	 * Available Environments:
-	 * Dallas - https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1
-	 * London - https://wasaas-broker.eu-gb.bluemix.net/wasaas-broker/api/v1
-	 * Sydney - https://wasaas-broker.au-syd.bluemix.net/wasaas-broker/api/v1
+	 * Dallas - https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * London - https://wasaas-broker.eu-gb.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Sydney - https://wasaas-broker.au-syd.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Frankfurt - https://wasaas-broker.eu-de.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
 	 */
-	private static final String apiEndpoint = "https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1";
+	
+	private static final String apiEndpoint = "https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1";
 
-	public static void main(String[] args) throws IOException{
-		// You can see how to get your access token from GetOAuthToken sample class.
-		String accessToken = "<YOUR_ACCESS_TOKEN>";
-		// The Bluemix organization & space to query - case sensitive.
-		String org = "<YOUR_ORG>"; // Example: johndoe@ibm.com
-		String space = "<YOUR_SPACE>"; // Example: dev
-
+	public static void main(String[] args) throws IOException{		
 		// Use TLSv1.2
 		System.setProperty("https.protocols", "TLSv1.2");
-
+		
+		String ibmCloudUsername = "<YOUR_USERNAME>";
+		String ibmCloudPassword = "<YOUR_PASSWORD>";
+		
+		// Create the Basic auth string.
+		String authStr = ibmCloudUsername + ":" + ibmCloudPassword;
+		// Base64 Encode the username and password.
+		String authEncoded = DatatypeConverter.printBase64Binary(authStr.getBytes());
+		
 		// Create the URL.
-		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org + "/spaces/" + space);
-		HttpURLConnection con = (HttpURLConnection) orgsURL.openConnection();
+		URL oauthURL = new URL(apiEndpoint + "/oauth");
+		HttpURLConnection con = (HttpURLConnection) oauthURL.openConnection();
 		con.setRequestMethod("GET");
-		con.setRequestProperty("Authorization", "Bearer " + accessToken);
+		con.setRequestProperty("Authorization", "Basic " + authEncoded);
 
 		BufferedReader br = null;
 		if (HttpURLConnection.HTTP_OK == con.getResponseCode()) {
 			br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		}
+		} 
 		else {
 			br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 		}
-
+		
 		StringBuffer response = new StringBuffer();
 		String line;
 
@@ -50,7 +58,7 @@ public class GetSpace {
 		// Response from the request.
 		System.out.println(response.toString());
 	}
-
+	
 }
 //    ------------------------------------------------------------------------------
 //     Licensed under the Apache License, Version 2.0 (the "License");

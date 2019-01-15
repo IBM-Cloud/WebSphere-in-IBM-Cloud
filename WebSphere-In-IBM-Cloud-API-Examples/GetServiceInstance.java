@@ -5,32 +5,32 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-// Get info about a single resource associated with a service instance.
-public class GetResource {
-	/* WebSphere Application Server for Bluemix API URL.
+// Query information about a single service instance.
+public class GetServiceInstance {
+	/* WebSphere Application Server for IBM Cloud API URL.
 	 * Available Environments:
-	 * Dallas - https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1
-	 * London - https://wasaas-broker.eu-gb.bluemix.net/wasaas-broker/api/v1
-	 * Sydney - https://wasaas-broker.au-syd.bluemix.net/wasaas-broker/api/v1
+	 * Dallas - https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * London - https://wasaas-broker.eu-gb.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Sydney - https://wasaas-broker.au-syd.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Frankfurt - https://wasaas-broker.eu-de.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
 	 */
-	private static final String apiEndpoint = "https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1";
+	
+	private static final String apiEndpoint = "https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1";
 
 	public static void main(String[] args) throws IOException{
 		// You can see how to get your access token from GetOAuthToken sample class.
 		String accessToken = "<YOUR_ACCESS_TOKEN>";
-		// The Bluemix organization & space to query - case sensitive.
+		// The IBM Cloud organization & space to query - case sensitive.
 		String org = "<YOUR_ORG>"; // Example: johndoe@ibm.com
 		String space = "<YOUR_SPACE>"; // Example: dev
 		// You can see how to get a service instance ID from the GetServiceInstances sample class.
 		String serviceInstanceID = "<YOUR_SERVICE_INSTANCE_ID>"; // Example: dc8djk2-ddbf-43n33-ba4e-132094dn3imd
-		// You can see how to get a resource ID from the GetResources sample class.
-		String resourceID = "<YOUR_RESOURCE_ID>"; // Example: 8dsjo03-939jksdf3-93j38f-93jf-39dfji32
 
 		// Use TLSv1.2
 		System.setProperty("https.protocols", "TLSv1.2");
 
 		// Create the URL.
-		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org + "/spaces/" + space + "/serviceinstances/" + serviceInstanceID + "/resources/" + resourceID);
+		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org + "/spaces/" + space + "/serviceinstances/" + serviceInstanceID);
 		HttpURLConnection con = (HttpURLConnection) orgsURL.openConnection();
 		con.setRequestMethod("GET");
 		con.setRequestProperty("Authorization", "Bearer " + accessToken);

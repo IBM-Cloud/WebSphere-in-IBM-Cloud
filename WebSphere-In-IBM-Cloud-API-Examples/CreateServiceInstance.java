@@ -8,18 +8,20 @@ import java.net.URL;
 
 // Create a service instance.
 public class CreateServiceInstance {
-	/* WebSphere Application Server for Bluemix API URL.
+	/* WebSphere Application Server for IBM Cloud API URL.
 	 * Available Environments:
-	 * Dallas - https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1
-	 * London - https://wasaas-broker.eu-gb.bluemix.net/wasaas-broker/api/v1
-	 * Sydney - https://wasaas-broker.au-syd.bluemix.net/wasaas-broker/api/v1
+	 * Dallas - https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * London - https://wasaas-broker.eu-gb.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Sydney - https://wasaas-broker.au-syd.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Frankfurt - https://wasaas-broker.eu-de.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
 	 */
-	private static final String apiEndpoint = "https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1";
+	
+	private static final String apiEndpoint = "https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1";
 
 	public static void main(String[] args) throws IOException{
 		// You can see how to get your access token from GetOAuthToken sample class.
 		String accessToken = "<YOUR_ACCESS_TOKEN>";
-		// The Bluemix organization & space to query - case sensitive.
+		// The IBM Cloud organization & space to query - case sensitive.
 		String org = "<YOUR_ORG>"; // Example: johndoe@ibm.com
 		String space = "<YOUR_SPACE>"; // Example: dev 
 
@@ -38,7 +40,7 @@ public class CreateServiceInstance {
 		 * Type:                    The plan type to create.
 		 * 							Enum: ["LibertyCollective", "LibertyCore", "LibertyNDServer", "WASBase", "WASCell", "WASNDServer"]
 		 *
-		 * Name:                    Name your new service icon in Bluemix.
+		 * Name:                    Name your new service icon in IBM Cloud.
 		 *
 		 * ApplicationServerVMSize: The size of the virtual machine.
 		 * 							Enum: [S, M, L, XL, XXL]

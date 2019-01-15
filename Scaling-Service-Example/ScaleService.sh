@@ -306,7 +306,7 @@ echo ""
 # Set other variables for use in script
 CurlFlags="-k -i -s"  # -k for ssl ignoring, -i for header info, -s for silent mode
 
-# Retrieve Bearer Token from Bluemix to use API
+# Retrieve Bearer Token from IBM Cloud to use API
 echo "Retrieving bearer token..."
 echo ""
 get_bearer_token

@@ -5,27 +5,27 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-// Query information about a single organization.
-public class GetOrganization {
-	/* WebSphere Application Server for Bluemix API URL.
+// Get all organizations associated with your IBM Cloud account.
+public class GetOrganizations {
+	/* WebSphere Application Server for IBM Cloud API URL.
 	 * Available Environments:
-	 * Dallas - https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1
-	 * London - https://wasaas-broker.eu-gb.bluemix.net/wasaas-broker/api/v1
-	 * Sydney - https://wasaas-broker.au-syd.bluemix.net/wasaas-broker/api/v1
+	 * Dallas - https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * London - https://wasaas-broker.eu-gb.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Sydney - https://wasaas-broker.au-syd.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
+	 * Frankfurt - https://wasaas-broker.eu-de.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1
 	 */
-	private static final String apiEndpoint = "https://wasaas-broker.ng.bluemix.net/wasaas-broker/api/v1";
+	
+	private static final String apiEndpoint = "https://wasaas-broker.us-south.websphereappsvr.cloud.ibm.com/wasaas-broker/api/v1";
 
 	public static void main(String[] args) throws IOException{
 		// You can see how to get your access token from GetOAuthToken sample class.
 		String accessToken = "<YOUR_ACCESS_TOKEN>";
-		// The Bluemix organization to query - case sensitive.
-		String org = "<YOUR_ORG>"; // Example: dev
-
+		
 		// Use TLSv1.2
 		System.setProperty("https.protocols", "TLSv1.2");
-
+        
 		// Create the URL.
-		URL orgsURL = new URL(apiEndpoint + "/organizations/" + org);
+		URL orgsURL = new URL(apiEndpoint + "/organizations");
 		HttpURLConnection con = (HttpURLConnection) orgsURL.openConnection();
 		con.setRequestMethod("GET");
 		con.setRequestProperty("Authorization", "Bearer " + accessToken);
@@ -33,11 +33,11 @@ public class GetOrganization {
 		BufferedReader br = null;
 		if (HttpURLConnection.HTTP_OK == con.getResponseCode()) {
 			br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-		}
+		} 
 		else {
 			br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
 		}
-
+		
 		StringBuffer response = new StringBuffer();
 		String line;
 
@@ -49,7 +49,7 @@ public class GetOrganization {
 		// Response from the request.
 		System.out.println(response.toString());
 	}
-
+	
 }
 //    ------------------------------------------------------------------------------
 //     Licensed under the Apache License, Version 2.0 (the "License");
